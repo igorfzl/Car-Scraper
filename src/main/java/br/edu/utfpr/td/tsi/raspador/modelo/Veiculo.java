@@ -6,7 +6,7 @@ public class Veiculo {
     private String ano;
     private String linkOriginal;
 
-    // Construtor vazio para facilitar o uso de frameworks JSON como o Gson
+
     public Veiculo() {
     }
 

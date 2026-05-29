@@ -1,28 +1,35 @@
 package br.edu.utfpr.td.tsi.raspador;
 
+import br.edu.utfpr.td.tsi.raspador.etl.Carregador;
+import br.edu.utfpr.td.tsi.raspador.etl.Extrator;
+import br.edu.utfpr.td.tsi.raspador.etl.Job;
+import br.edu.utfpr.td.tsi.raspador.extratores.ExtratorJsoup;
+import br.edu.utfpr.td.tsi.raspador.etl.ArquivoJsonCarregador;
+import br.edu.utfpr.td.tsi.raspador.modelo.Veiculo;
+import br.edu.utfpr.td.tsi.raspador.transformadores.ChavesNaMaoTransformador;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import org.jsoup.nodes.Document;
+
+import java.util.List;
 
 @SpringBootApplication
 public class App {
     public static void main(String[] args) {
-        Extrator<Document> extratorPadrao = new JsoupExtrator();
-        Carregador<List<Veiculo>> carregadorJson = new ArquivoJsonCarregador();
+        // 1. Prepara as ferramentas gerais
+        Extrator<Document> extratorPadrao = new ExtratorJsoup(); // Confirme se o nome exato da sua classe é este
+        Carregador<List<Veiculo>> carregadorJson = new ArquivoJsonCarregador("veiculos_chavesnamao.json");
 
-        // Monta e executa o fluxo para o site 1
-        Job<Document, List<Veiculo>> jobML = new Job<>(
+        // 2. Monta o fluxo APENAS para o Chaves na Mão
+        System.out.println("\n=== INICIANDO RASPAGEM: CHAVES NA MÃO ===");
+
+        Job<Document, List<Veiculo>> jobChaves = new Job<>(
                 extratorPadrao,
-                new MercadoLivreTransformador(),
+                new ChavesNaMaoTransformador(),
                 carregadorJson
         );
-        jobML.executar("https://lista.mercadolivre.com.br/veiculos/carros-caminhonetes/parana/toledo/");
 
-        // Monta e executa o fluxo para o site 2
-        Job<Document, List<Veiculo>> jobSoCarrao = new Job<>(
-                extratorPadrao,
-                new SoCarraoTransformador(),
-                carregadorJson
-        );
-        jobSoCarrao.executar("https://www.socarrao.com.br/carros/toledo-pr");
-
+        // 3. Executa a busca em Toledo
+        jobChaves.executar("https://www.chavesnamao.com.br/carros-usados/pr-toledo/");
     }
 }

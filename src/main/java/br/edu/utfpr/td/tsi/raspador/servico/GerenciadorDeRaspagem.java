@@ -27,7 +27,6 @@ public class GerenciadorDeRaspagem {
         System.out.println("=== INICIANDO RASPAGEM: MERCADO LIVRE ===");
         Job<Document, List<Veiculo>> jobML = new Job<>();
         jobML.setExtrator(carteiroJsoup);
-        jobML.setTransformador(new MercadoLivreTransformador());
         jobML.setCarregador(impressora);
         jobML.executar("https://lista.mercadolivre.com.br/veiculos/carros-caminhonetes/parana/cascavel/new-fiesta-2014");
 

@@ -6,11 +6,9 @@ import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
-// ERRO COMUM 1: Esquecer de colocar o <Document> aqui na frente
 public class ExtratorJsoup implements Extrator<Document> {
 
     @Override
-    // ERRO COMUM 2: Esquecer de colocar a (String url) aqui dentro
     public Document extrair(String url) {
         try {
             System.out.println("-> Conectando e baixando HTML de: " + url);
