@@ -1,14 +1,13 @@
 package br.edu.utfpr.td.tsi.raspador;
 
-import br.edu.utfpr.td.tsi.raspador.etl.Carregador;
 import br.edu.utfpr.td.tsi.raspador.etl.Extrator;
 import br.edu.utfpr.td.tsi.raspador.etl.Job;
 import br.edu.utfpr.td.tsi.raspador.extratores.ExtratorJsoup;
 import br.edu.utfpr.td.tsi.raspador.etl.ArquivoJsonCarregador;
 import br.edu.utfpr.td.tsi.raspador.modelo.Veiculo;
 import br.edu.utfpr.td.tsi.raspador.transformadores.ChavesNaMaoTransformador;
-import br.edu.utfpr.td.tsi.raspador.transformadores.MercadoLivreTransformador;
-import br.edu.utfpr.td.tsi.raspador.transformadores.NaPistaTransformador; // Novo Import!
+import br.edu.utfpr.td.tsi.raspador.transformadores.LocalizaTransformador;
+import br.edu.utfpr.td.tsi.raspador.transformadores.NaPistaTransformador;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.jsoup.nodes.Document;
@@ -52,30 +51,17 @@ public class App {
         System.out.println("\nExtração finalizada com sucesso!");
 
 
-        System.out.println("\n=== INICIANDO RASPAGEM: MERCADO LIVRE ===");
-        ArquivoJsonCarregador carregadorML = new ArquivoJsonCarregador("todos_veiculos_mercadolivre.json");
-        Job<Document, List<Veiculo>> jobML = new Job<>(
+        System.out.println("\n=== INICIANDO RASPAGEM: LOCALIZA SEMINOVOS ===");
+        ArquivoJsonCarregador carregadorLocaliza = new ArquivoJsonCarregador("veiculos_localiza.json");
+        Job<Document, List<Veiculo>> jobLocaliza = new Job<>(
                 extratorPadrao,
-                new MercadoLivreTransformador(),
-                carregadorML
+                new LocalizaTransformador(),
+                carregadorLocaliza
         );
+        // Link focado na sua região
+        jobLocaliza.executar("https://seminovos.localiza.com/carros/pr-cascavel");
 
-        for (int i = 1; i <= limitePaginas; i++) {
-            System.out.println("-> Extraindo página " + i + "...");
-
-            String urlML;
-            if (i == 1) {
-                // A primeira página usa a URL base limpa
-                urlML = "https://lista.mercadolivre.com.br/veiculos/carros-caminhonetes-em-cascavel-parana/";
-            } else {
-
-                int deslocamento = ((i - 1) * 48) + 1;
-                urlML = "https://lista.mercadolivre.com.br/veiculos/carros-caminhonetes-em-cascavel-parana/_Desde_" + deslocamento + "_NoIndex_True";
-            }
-
-            jobML.executar(urlML);
-            pausa(2000); // Anti-ban
-        }
+        System.out.println("\nExtração da primeira página de todos os sites finalizada com sucesso!");
     }
 
     private static void pausa(int milissegundos) {
