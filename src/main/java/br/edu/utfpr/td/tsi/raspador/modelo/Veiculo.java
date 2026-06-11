@@ -17,7 +17,6 @@ public class Veiculo {
         this.linkOriginal = linkOriginal;
     }
 
-    // Getters e Setters
     public String getTitulo() {
         return titulo;
     }

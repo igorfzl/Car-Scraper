@@ -5,14 +5,12 @@ public class Job<T, R> {
     private Transformador<T, R> transformador;
     private Carregador<R> carregador;
 
-    // --- ADICIONE ESTE CONSTRUTOR AQUI ---
     public Job(Extrator<T> extrator, Transformador<T, R> transformador, Carregador<R> carregador) {
         this.extrator = extrator;
         this.transformador = transformador;
         this.carregador = carregador;
     }
 
-    // Construtor vazio por segurança
     public Job() {
     }
 

@@ -20,7 +20,5 @@ public class GerenciadorDeRaspagem {
                 System.out.println(v.toString());
             }
         };
-
-        // Aqui você adicionará os próximos Jobs (Chaves na Mão, SóCarrão) futuramente...
     }
 }

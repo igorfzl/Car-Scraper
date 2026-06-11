@@ -12,7 +12,6 @@ import java.util.List;
 public class ArquivoJsonCarregador implements Carregador<List<Veiculo>> {
 
     private String nomeArquivo;
-    // Esta lista vai servir de "memória" para acumular os carros de todas as páginas
     private List<Veiculo> todosVeiculos = new ArrayList<>();
 
     public ArquivoJsonCarregador(String nomeArquivo) {
@@ -21,10 +20,8 @@ public class ArquivoJsonCarregador implements Carregador<List<Veiculo>> {
 
     @Override
     public void carregar(List<Veiculo> dadosProcessados) {
-        // Adiciona os carros da página atual na lista gigante
         todosVeiculos.addAll(dadosProcessados);
 
-        // Grava a lista acumulada no arquivo JSON
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try (FileWriter writer = new FileWriter(nomeArquivo)) {
             gson.toJson(todosVeiculos, writer);
