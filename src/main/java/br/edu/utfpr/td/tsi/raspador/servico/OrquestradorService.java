@@ -12,12 +12,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service // <-- Define que é a camada de negócio/lógica
+@Service
 public class OrquestradorService {
 
     private final Extrator<Document> extratorPadrao;
 
-    // O Spring injeta o extrator aqui automaticamente
     public OrquestradorService(Extrator<Document> extratorPadrao) {
         this.extratorPadrao = extratorPadrao;
     }
