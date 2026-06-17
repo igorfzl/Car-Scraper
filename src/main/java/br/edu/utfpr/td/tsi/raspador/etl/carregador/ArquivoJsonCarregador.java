@@ -1,5 +1,6 @@
-package br.edu.utfpr.td.tsi.raspador.etl;
+package br.edu.utfpr.td.tsi.raspador.etl.carregador;
 
+import br.edu.utfpr.td.tsi.raspador.etl.interfaces.Carregador;
 import br.edu.utfpr.td.tsi.raspador.modelo.Veiculo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

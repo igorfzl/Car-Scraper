@@ -1,6 +1,6 @@
-package br.edu.utfpr.td.tsi.raspador.transformadores;
+package br.edu.utfpr.td.tsi.raspador.etl.transformadores;
 
-import br.edu.utfpr.td.tsi.raspador.etl.Transformador;
+import br.edu.utfpr.td.tsi.raspador.etl.interfaces.Transformador;
 import br.edu.utfpr.td.tsi.raspador.modelo.Veiculo;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

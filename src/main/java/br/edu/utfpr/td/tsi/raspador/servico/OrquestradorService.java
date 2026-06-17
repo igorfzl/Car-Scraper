@@ -1,12 +1,12 @@
 package br.edu.utfpr.td.tsi.raspador.servico;
 
-import br.edu.utfpr.td.tsi.raspador.etl.Extrator;
+import br.edu.utfpr.td.tsi.raspador.etl.interfaces.Extrator;
 import br.edu.utfpr.td.tsi.raspador.etl.Job;
-import br.edu.utfpr.td.tsi.raspador.etl.ArquivoJsonCarregador;
+import br.edu.utfpr.td.tsi.raspador.etl.carregador.ArquivoJsonCarregador;
 import br.edu.utfpr.td.tsi.raspador.modelo.Veiculo;
-import br.edu.utfpr.td.tsi.raspador.transformadores.ChavesNaMaoTransformador;
-import br.edu.utfpr.td.tsi.raspador.transformadores.LocalizaTransformador;
-import br.edu.utfpr.td.tsi.raspador.transformadores.NaPistaTransformador;
+import br.edu.utfpr.td.tsi.raspador.etl.transformadores.ChavesNaMaoTransformador;
+import br.edu.utfpr.td.tsi.raspador.etl.transformadores.LocalizaTransformador;
+import br.edu.utfpr.td.tsi.raspador.etl.transformadores.NaPistaTransformador;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
 

@@ -1,5 +1,9 @@
 package br.edu.utfpr.td.tsi.raspador.etl;
 
+import br.edu.utfpr.td.tsi.raspador.etl.interfaces.Carregador;
+import br.edu.utfpr.td.tsi.raspador.etl.interfaces.Extrator;
+import br.edu.utfpr.td.tsi.raspador.etl.interfaces.Transformador;
+
 public class Job<T, R> {
     private Extrator<T> extrator;
     private Transformador<T, R> transformador;

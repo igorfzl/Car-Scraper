@@ -1,6 +1,6 @@
 package br.edu.utfpr.td.tsi.raspador.extratores;
 
-import br.edu.utfpr.td.tsi.raspador.etl.Extrator;
+import br.edu.utfpr.td.tsi.raspador.etl.interfaces.Extrator;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Component;
