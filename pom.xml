@@ -22,7 +22,6 @@
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -39,7 +38,6 @@
             <artifactId>jsoup</artifactId>
             <version>1.17.2</version>
         </dependency>
-
     </dependencies>
 
 </project>

@@ -6,10 +6,6 @@ public class Veiculo {
     private String ano;
     private String linkOriginal;
 
-
-    public Veiculo() {
-    }
-
     public Veiculo(String titulo, String preco, String ano, String linkOriginal) {
         this.titulo = titulo;
         this.preco = preco;
